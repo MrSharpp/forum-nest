@@ -1,14 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserController } from './modules/auth/user.controller';
-import { DatabaseModule } from './database/database.module';
-import { databaseProviders } from './database/database.providers';
-import { GraphQLModule } from '@nestjs/graphql';
+import { UserController } from './user/user.controller';
+import { UserService } from './user/user.service';
 
 @Module({
-  imports: [GraphQLModule.forRoot({}), DatabaseModule],
+  imports: [],
   controllers: [AppController, UserController],
-  providers: [AppService, ...databaseProviders],
+  providers: [AppService, UserService],
 })
 export class AppModule {}
