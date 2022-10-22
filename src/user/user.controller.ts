@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { UserService } from './user.service';
-import { Message } from './user.dto';
+import { LoginDTO } from './user.dto';
 
 @Controller('users')
 export class UserController {
@@ -12,7 +12,7 @@ export class UserController {
   }
 
   @Post()
-  setHello(@Body() body: Message): void {
-    this.userService.setHello(body.message);
+  setHello(@Body() loginDto: LoginDTO) {
+    return 'Added';
   }
 }
