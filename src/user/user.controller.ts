@@ -6,13 +6,8 @@ import { LoginDTO } from './user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get()
-  getHello(): string {
-    return this.userService.getHello();
-  }
-
   @Post()
-  setHello(@Body() loginDto: LoginDTO) {
-    return 'Added';
+  createUser(@Body() loginDto: LoginDTO): object {
+    return this.userService.createUser();
   }
 }
