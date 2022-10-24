@@ -5,7 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { RootResolver } from './resolver';
 import { UserModule } from './user/user.module';
-import { PrismaService } from './prisma.service';
+import { PrismaService } from './PrismaService';
 import { PrismaClient } from '@prisma/client';
 
 @Module({
