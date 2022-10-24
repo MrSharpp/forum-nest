@@ -7,7 +7,6 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { RootResolver } from './resolver';
 import { UserModule } from './user/user.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -16,16 +15,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       driver: ApolloDriver,
       playground: true,
       autoSchemaFile: true,
-    }),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'Root1194@#',
-      database: 'forum',
-      entities: [],
-      synchronize: true,
     }),
   ],
   controllers: [AppController],
