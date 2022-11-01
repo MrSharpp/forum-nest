@@ -1,18 +1,18 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { User } from './user.model';
 import { UserService } from './user.service';
 
-@Resolver()
+@Resolver((of) => User)
 export class UserResolver {
   constructor(private userService: UserService) {}
 
-  @Query(() => String)
-  sayHelloUser(): string {
+  @Query((returns) => String)
+  login(): string {
     return 'Hello World! User';
   }
 
-  @Query(() => String)
-  async getUsers() {
-    const users = await this.userService.getUsers();
-    return users.toString();
+  @Mutation((returns) => User)
+  async createUser(@Args('email') email: string) {
+    return await this.userService.createUser(email);
   }
 }
