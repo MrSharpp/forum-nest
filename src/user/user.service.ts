@@ -4,8 +4,12 @@ import { PrismaService } from 'src/PrismaService';
 @Injectable()
 export class UserService {
   constructor(private prismaService: PrismaService) {}
-  createUser(email: string): object {
-    return { msg: 'Creating user account' };
+  async createUser(email: string): Promise<string> {
+    const resp = await this.prismaService.user.create({
+      data: { email, password: 'aljak@d' },
+    });
+    console.log(resp);
+    return 'created account';
   }
 
   async getUsers() {

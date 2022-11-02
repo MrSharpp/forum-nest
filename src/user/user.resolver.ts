@@ -11,7 +11,7 @@ export class UserResolver {
     return 'Hello World! User';
   }
 
-  @Mutation((returns) => User)
+  @Mutation((returns) => String)
   async createUser(@Args('email') email: string) {
     return await this.userService.createUser(email);
   }
